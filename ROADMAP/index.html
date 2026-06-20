@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java Mastery Roadmap — DSA + Dev → 25 LPA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0A0E1A;
+    --ink2: #111827;
+    --ink3: #1C2333;
+    --orange: #FF6B35;
+    --orange-dim: #FF6B3520;
+    --lime: #C8F135;
+    --lime-dim: #C8F13518;
+    --steel: #8B9EC7;
+    --steel-dim: #8B9EC720;
+    --white: #F0F2FF;
+    --white-dim: #F0F2FF10;
+    --white-mid: #F0F2FF60;
+    --green: #22C55E;
+    --blue: #3B82F6;
+    --amber: #F59E0B;
+    --coral: #F87171;
+    --purple: #A78BFA;
+    --border: #ffffff14;
+    --border2: #ffffff22;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .display { font-family: 'Space Grotesk', sans-serif; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 40px;
+    background: #0A0E1Aee;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-logo .dot { width: 8px; height: 8px; background: var(--lime); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: var(--steel); text-decoration: none; font-size: 13px; font-weight: 500;
+    letter-spacing: .04em; text-transform: uppercase; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 40px 80px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+  }
+
+  .hero-glow {
+    position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 400px;
+    background: radial-gradient(ellipse, #FF6B3515 0%, transparent 70%);
+    z-index: 0; pointer-events: none;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+    color: var(--lime); letter-spacing: .1em; text-transform: uppercase;
+    border: 1px solid var(--lime-dim); padding: 6px 14px; border-radius: 4px;
+    margin-bottom: 32px; background: var(--lime-dim);
+  }
+
+  .hero-title {
+    font-size: clamp(52px, 8vw, 110px); font-weight: 700; line-height: .95;
+    letter-spacing: -.03em; margin-bottom: 24px;
+  }
+  .hero-title .line1 { display: block; color: var(--white); }
+  .hero-title .line2 { display: block; color: var(--orange); }
+  .hero-title .line3 { display: block; color: var(--steel); font-weight: 300; }
+
+  .hero-sub {
+    font-size: 18px; color: var(--white-mid); max-width: 560px;
+    line-height: 1.7; margin-bottom: 48px;
+  }
+
+  .hero-stats {
+    display: flex; gap: 0; margin-bottom: 48px;
+    border: 1px solid var(--border2); border-radius: 12px; overflow: hidden;
+    max-width: 680px;
+  }
+  .stat-cell {
+    flex: 1; padding: 20px 24px; border-right: 1px solid var(--border2);
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700;
+    color: var(--orange); line-height: 1;
+  }
+  .stat-label { font-size: 12px; color: var(--steel); margin-top: 4px; }
+
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--orange); color: #fff; padding: 14px 28px;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px;
+    border: none; border-radius: 6px; cursor: pointer; text-decoration: none;
+    transition: all .2s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: #e55a27; transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--white); padding: 14px 28px;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px;
+    border: 1px solid var(--border2); border-radius: 6px; cursor: pointer; text-decoration: none;
+    transition: all .2s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+  .hero-books {
+    position: absolute; right: 40px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 12px; z-index: 1;
+  }
+  .book-tag {
+    padding: 10px 16px; border: 1px solid var(--border2); border-radius: 8px;
+    background: var(--ink3); font-size: 12px; font-family: 'JetBrains Mono', monospace;
+    color: var(--steel); max-width: 240px;
+  }
+  .book-tag .bt-num { color: var(--orange); font-weight: 700; }
+  .book-tag .bt-title { color: var(--white); font-size: 11px; margin-top: 2px; }
+
+  /* ─── SECTION WRAPPER ─── */
+  .section { padding: 100px 40px; max-width: 1300px; margin: 0 auto; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .full-bleed { max-width: none; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+    color: var(--orange); letter-spacing: .12em; text-transform: uppercase;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--orange);
+  }
+
+  .section-title {
+    font-size: clamp(32px, 5vw, 56px); font-weight: 700; line-height: 1.05;
+    letter-spacing: -.02em; margin-bottom: 16px;
+  }
+  .section-sub { font-size: 17px; color: var(--white-mid); max-width: 540px; line-height: 1.7; margin-bottom: 56px; }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    border: none; border-top: 1px solid var(--border);
+    margin: 0;
+  }
+  .divider-thick {
+    height: 3px; background: linear-gradient(90deg, var(--orange), transparent);
+    border: none; margin: 0;
+  }
+
+  /* ─── PHASE TIMELINE ─── */
+  .timeline-section {
+    padding: 80px 40px;
+    background: var(--ink2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .timeline-inner { max-width: 1200px; margin: 0 auto; }
+  .tl-track {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0; margin-top: 48px;
+    border: 1px solid var(--border2); border-radius: 12px; overflow: hidden;
+  }
+  .tl-phase {
+    padding: 28px 20px; border-right: 1px solid var(--border2);
+    position: relative; cursor: pointer;
+    transition: background .2s;
+  }
+  .tl-phase:last-child { border-right: none; }
+  .tl-phase:hover { background: var(--white-dim); }
+  .tl-phase-num {
+    font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 700;
+    color: var(--border2); line-height: 1; margin-bottom: 8px; transition: color .2s;
+  }
+  .tl-phase:hover .tl-phase-num { color: var(--orange); }
+  .tl-phase-name { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+  .tl-phase-months {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--steel);
+  }
+  .tl-bar { height: 3px; margin-top: 16px; border-radius: 2px; }
+  .bar-green { background: #22C55E; }
+  .bar-blue  { background: #3B82F6; }
+  .bar-amber { background: #F59E0B; }
+  .bar-coral { background: #F87171; }
+  .bar-purple{ background: #A78BFA; }
+
+  /* ─── BOOKS SECTION ─── */
+  .books-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+  .book-card {
+    background: var(--ink3); border: 1px solid var(--border2); border-radius: 12px;
+    padding: 32px; position: relative; overflow: hidden;
+    transition: border-color .2s, transform .2s;
+  }
+  .book-card:hover { border-color: var(--orange); transform: translateY(-3px); }
+  .book-card::before {
+    content: attr(data-num);
+    position: absolute; top: -10px; right: 16px;
+    font-family: 'Space Grotesk', sans-serif; font-size: 120px; font-weight: 700;
+    color: var(--white-dim); line-height: 1; pointer-events: none;
+  }
+  .book-icon-big { font-size: 40px; margin-bottom: 16px; }
+  .book-badge {
+    display: inline-block; font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+    padding: 3px 10px; border-radius: 3px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .badge-phase1 { background: #22C55E20; color: #22C55E; border: 1px solid #22C55E40; }
+  .badge-phase2 { background: #3B82F620; color: #3B82F6; border: 1px solid #3B82F640; }
+  .badge-phase12 { background: #A78BFA20; color: #A78BFA; border: 1px solid #A78BFA40; }
+  .book-title { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 8px; line-height: 1.3; }
+  .book-author { font-size: 12px; color: var(--steel); margin-bottom: 16px; font-family: 'JetBrains Mono', monospace; }
+  .book-desc { font-size: 14px; color: var(--white-mid); line-height: 1.7; }
+  .book-chapters {
+    margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);
+  }
+  .book-chapters-label { font-size: 11px; color: var(--orange); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+  .chapter-tag {
+    display: inline-block; font-size: 11px; font-family: 'JetBrains Mono', monospace;
+    padding: 3px 8px; background: var(--orange-dim); color: var(--orange);
+    border-radius: 3px; margin: 2px; border: 1px solid var(--orange-dim);
+  }
+
+  /* ─── PHASE DETAIL CARDS ─── */
+  .phase-detail {
+    padding: 80px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .phase-detail::before {
+    content: attr(data-phase-bg);
+    position: absolute; right: -20px; top: 50%; transform: translateY(-50%);
+    font-family: 'Space Grotesk', sans-serif; font-size: 200px; font-weight: 700;
+    color: var(--white-dim); line-height: 1; pointer-events: none; user-select: none;
+  }
+  .phase-detail-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+  .phase-header-row { display: flex; align-items: flex-start; gap: 40px; margin-bottom: 48px; flex-wrap: wrap; }
+  .phase-num-big {
+    font-family: 'Space Grotesk', sans-serif; font-size: 80px; font-weight: 700;
+    line-height: 1; color: var(--orange); flex-shrink: 0;
+  }
+  .phase-header-text {}
+  .phase-months-badge {
+    display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    padding: 4px 12px; border-radius: 3px; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .phase-title-h2 { font-size: 36px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .phase-subtitle { font-size: 15px; color: var(--white-mid); }
+
+  .topics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .topics-card {
+    background: var(--ink2); border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+  }
+  .topics-card-label {
+    font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+    color: var(--steel); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .topics-card-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .topic-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--white-mid);
+  }
+  .topic-item:last-child { border-bottom: none; }
+  .topic-arrow { color: var(--orange); flex-shrink: 0; font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-top: 1px; }
+
+  /* resources */
+  .res-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+  .res-item {
+    display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+    background: var(--ink3); border: 1px solid var(--border); border-radius: 8px;
+    text-decoration: none; color: var(--white-mid); font-size: 13px; transition: all .2s;
+  }
+  .res-item:hover { border-color: var(--orange); color: var(--white); }
+  .res-icon { font-size: 16px; flex-shrink: 0; }
+  .res-lang-tag {
+    margin-left: auto; font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+    padding: 2px 8px; border-radius: 3px; flex-shrink: 0;
+  }
+  .lang-en { background: #3B82F620; color: #3B82F6; border: 1px solid #3B82F630; }
+  .lang-hi { background: #F59E0B20; color: #F59E0B; border: 1px solid #F59E0B30; }
+
+  /* tip box */
+  .tip-box {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--orange-dim); border: 1px solid var(--orange);
+    border-radius: 8px; padding: 14px 16px; margin-top: 20px;
+    font-size: 13px; color: var(--white-mid);
+  }
+  .tip-icon { color: var(--orange); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ─── DSA PHASE ─── */
+  .dsa-problems-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 20px;
+  }
+  .prob-card {
+    background: var(--ink3); border: 1px solid var(--border); border-radius: 10px; padding: 20px;
+    text-align: center;
+  }
+  .prob-num {
+    font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700;
+    color: var(--lime); line-height: 1;
+  }
+  .prob-label { font-size: 12px; color: var(--steel); margin-top: 4px; }
+
+  /* ─── PROJECTS ─── */
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .project-card {
+    background: var(--ink3); border: 1px solid var(--border); border-radius: 10px; padding: 20px;
+    transition: border-color .2s, transform .2s;
+  }
+  .project-card:hover { border-color: var(--lime); transform: translateY(-2px); }
+  .project-level {
+    font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+    padding: 3px 10px; border-radius: 3px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: inline-block;
+  }
+  .lv-beginner { background: #22C55E18; color: #22C55E; border: 1px solid #22C55E30; }
+  .lv-intermediate { background: #F59E0B18; color: #F59E0B; border: 1px solid #F59E0B30; }
+  .lv-capstone { background: #FF6B3518; color: #FF6B35; border: 1px solid #FF6B3530; }
+  .project-name { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .project-stack { font-size: 12px; color: var(--steel); font-family: 'JetBrains Mono', monospace; }
+
+  /* ─── INTERVIEW SECTION ─── */
+  .interview-topics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .int-card {
+    background: var(--ink2); border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+  }
+  .int-card-icon { font-size: 28px; margin-bottom: 12px; }
+  .int-card-title { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+  .int-list { list-style: none; }
+  .int-list li {
+    font-size: 13px; color: var(--white-mid); padding: 6px 0;
+    border-bottom: 1px solid var(--border); display: flex; gap: 8px;
+  }
+  .int-list li:last-child { border-bottom: none; }
+  .int-list li::before { content: "→"; color: var(--purple); flex-shrink: 0; font-family: 'JetBrains Mono', monospace; }
+
+  /* ─── TARGET COMPANIES ─── */
+  .companies-section {
+    padding: 80px 40px;
+    background: var(--ink2);
+    border-top: 1px solid var(--border);
+  }
+  .companies-inner { max-width: 1200px; margin: 0 auto; }
+  .companies-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px; margin-top: 40px;
+  }
+  .company-pill {
+    padding: 12px 16px; background: var(--ink3); border: 1px solid var(--border2);
+    border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500;
+    color: var(--white); transition: all .2s; cursor: default;
+  }
+  .company-pill:hover { border-color: var(--lime); color: var(--lime); }
+  .company-pill .salary { display: block; font-size: 11px; color: var(--steel); margin-top: 2px; font-family: 'JetBrains Mono', monospace; }
+
+  /* ─── SALARY SECTION ─── */
+  .salary-section { padding: 100px 40px; }
+  .salary-inner { max-width: 1200px; margin: 0 auto; }
+  .salary-bars { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; }
+  .salary-row {
+    display: grid; grid-template-columns: 200px 1fr 120px; align-items: center; gap: 20px;
+  }
+  .sal-role { font-size: 14px; font-weight: 500; color: var(--white); }
+  .sal-years { font-size: 11px; color: var(--steel); font-family: 'JetBrains Mono', monospace; }
+  .sal-track { height: 32px; background: var(--ink3); border-radius: 6px; overflow: hidden; border: 1px solid var(--border); }
+  .sal-fill {
+    height: 100%; display: flex; align-items: center; padding-left: 14px;
+    font-size: 12px; font-weight: 700; font-family: 'Space Grotesk', monospace;
+    border-radius: 6px; transition: width 1s ease;
+  }
+  .sal-green { background: linear-gradient(90deg, #22C55E30, #22C55E50); color: #22C55E; border-right: 2px solid #22C55E; }
+  .sal-blue  { background: linear-gradient(90deg, #3B82F630, #3B82F650); color: #3B82F6; border-right: 2px solid #3B82F6; }
+  .sal-amber { background: linear-gradient(90deg, #F59E0B30, #F59E0B50); color: #F59E0B; border-right: 2px solid #F59E0B; }
+  .sal-orange{ background: linear-gradient(90deg, #FF6B3530, #FF6B3560); color: #FF6B35; border-right: 2px solid #FF6B35; }
+  .sal-lime  { background: linear-gradient(90deg, #C8F13530, #C8F13560); color: #7EA804; border-right: 2px solid #C8F135; }
+  .sal-target { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--lime); }
+
+  .skills-to-25 { margin-top: 56px; }
+  .s25-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  .s25-item {
+    padding: 18px 20px; background: var(--ink2); border: 1px solid var(--border);
+    border-radius: 8px; display: flex; gap: 14px; align-items: flex-start;
+    transition: border-color .2s;
+  }
+  .s25-item:hover { border-color: var(--lime); }
+  .s25-icon { font-size: 22px; flex-shrink: 0; }
+  .s25-text { font-size: 14px; color: var(--white-mid); }
+  .s25-text strong { color: var(--white); font-weight: 600; display: block; margin-bottom: 2px; }
+
+  /* ─── DAILY PLAN ─── */
+  .daily-section { padding: 80px 40px; background: var(--ink2); border-top: 1px solid var(--border); }
+  .daily-inner { max-width: 1200px; margin: 0 auto; }
+  .daily-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+  .day-card {
+    background: var(--ink); border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+  }
+  .day-label { font-size: 11px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--orange); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+  .day-schedule { display: flex; flex-direction: column; gap: 8px; }
+  .time-slot { display: flex; gap: 16px; align-items: flex-start; }
+  .time { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--steel); min-width: 80px; padding-top: 2px; }
+  .activity { font-size: 14px; color: var(--white-mid); }
+  .activity strong { color: var(--white); }
+
+  /* ─── ROADMAP INTERACTIVE (the widget) ─── */
+  .roadmap-widget-section { padding: 100px 40px; }
+  .widget-inner { max-width: 1200px; margin: 0 auto; }
+  .phase-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+  .phase-tab {
+    padding: 8px 18px; border-radius: 6px; font-size: 13px; font-weight: 600;
+    border: 1px solid var(--border2); background: var(--ink2); color: var(--steel);
+    cursor: pointer; transition: all .2s; font-family: 'Space Grotesk', sans-serif;
+  }
+  .phase-tab.active {
+    background: var(--orange); color: #fff; border-color: var(--orange);
+  }
+  .phase-tab:hover:not(.active) { border-color: var(--orange); color: var(--orange); }
+  .phase-pane { display: none; }
+  .phase-pane.active { display: block; }
+
+  .pane-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .pane-card {
+    background: var(--ink2); border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+  }
+  .pane-card-label {
+    font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    color: var(--steel); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--border);
+  }
+  .pane-topic {
+    display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border);
+    font-size: 13px; color: var(--white-mid); align-items: flex-start;
+  }
+  .pane-topic:last-child { border-bottom: none; }
+  .pane-topic::before { content: "▸"; color: var(--orange); flex-shrink: 0; font-size: 11px; margin-top: 2px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 60px 40px 40px;
+    border-top: 1px solid var(--border);
+    background: var(--ink);
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; flex-wrap: wrap; gap: 32px; }
+  .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; }
+  .footer-logo span { color: var(--orange); }
+  .footer-tagline { font-size: 14px; color: var(--steel); margin-top: 6px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--steel); flex-wrap: wrap; gap: 12px; }
+  .footer-quote { font-style: italic; color: var(--white-mid); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeInUp .6s ease both; }
+  .fade-in-1 { animation-delay: .1s; }
+  .fade-in-2 { animation-delay: .25s; }
+  .fade-in-3 { animation-delay: .4s; }
+  .fade-in-4 { animation-delay: .55s; }
+
+  /* ─── STICKY PHASE NAV ─── */
+  .sticky-phases {
+    position: sticky; top: 65px; z-index: 90;
+    background: var(--ink2)ee; backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+  }
+  .sticky-phases-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; gap: 0; overflow-x: auto;
+  }
+  .sticky-phases-inner::-webkit-scrollbar { height: 0; }
+  .sp-link {
+    padding: 14px 20px; font-size: 13px; font-weight: 500;
+    color: var(--steel); text-decoration: none; border-bottom: 2px solid transparent;
+    white-space: nowrap; transition: all .2s; font-family: 'Space Grotesk', sans-serif;
+    flex-shrink: 0;
+  }
+  .sp-link:hover { color: var(--orange); border-bottom-color: var(--orange); }
+
+  /* highlight card */
+  .highlight-card {
+    background: var(--lime-dim); border: 1px solid var(--lime);
+    border-radius: 10px; padding: 24px 28px; margin-top: 32px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .hc-icon { font-size: 28px; flex-shrink: 0; }
+  .hc-title { font-size: 16px; font-weight: 700; color: var(--lime); margin-bottom: 6px; }
+  .hc-text { font-size: 14px; color: var(--white-mid); line-height: 1.7; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 20px 60px; }
+    .hero-books { display: none; }
+    .hero-title { font-size: 48px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; flex-wrap: wrap; }
+    .section { padding: 60px 20px; }
+    .books-grid, .topics-grid, .projects-grid, .interview-topics, .pane-grid { grid-template-columns: 1fr; }
+    .tl-track { grid-template-columns: 1fr 1fr; }
+    .salary-row { grid-template-columns: 1fr; }
+    .daily-grid, .s25-grid { grid-template-columns: 1fr; }
+    .phase-detail { padding: 60px 20px; }
+    .phase-detail::before { display: none; }
+    .dsa-problems-row { grid-template-columns: 1fr 1fr; }
+    .footer-top { flex-direction: column; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .timeline-section, .daily-section, .companies-section { padding: 60px 20px; }
+    .salary-section { padding: 60px 20px; }
+    .roadmap-widget-section { padding: 60px 20px; }
+    .sticky-phases { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="dot"></span>
+    Java<span>Mastery</span>
+  </div>
+  <div class="nav-links">
+    <a href="#timeline">Overview</a>
+    <a href="#books">Books</a>
+    <a href="#phases">Phases</a>
+    <a href="#projects">Projects</a>
+    <a href="#interview">Interview</a>
+    <a href="#salary">Salary</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow fade-in fade-in-1">
+      <span>⬤</span> Complete Roadmap · 2025 Edition
+    </div>
+    <h1 class="hero-title fade-in fade-in-2">
+      <span class="line1">Learn Java.</span>
+      <span class="line2">Crack DSA.</span>
+      <span class="line3">Land 25 LPA.</span>
+    </h1>
+    <p class="hero-sub fade-in fade-in-3">
+      A structured 14-month plan to master Java programming for both DSA (placements) and backend development — using your 3 chosen books as the foundation.
+    </p>
+    <div class="hero-stats fade-in fade-in-3">
+      <div class="stat-cell">
+        <div class="stat-num">14</div>
+        <div class="stat-label">Months total</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Phases</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">400+</div>
+        <div class="stat-label">LeetCode problems</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">25L</div>
+        <div class="stat-label">Target salary</div>
+      </div>
+    </div>
+    <div class="hero-cta fade-in fade-in-4">
+      <a href="#timeline" class="btn-primary">Start the Roadmap →</a>
+      <a href="#books" class="btn-secondary">View Books</a>
+    </div>
+  </div>
+
+  <div class="hero-books fade-in fade-in-4">
+    <div class="book-tag">
+      <div class="bt-num">BOOK 01</div>
+      <div class="bt-title">Java: A Beginner's Guide</div>
+      <div style="color:#8B9EC7;font-size:11px;margin-top:4px">Herbert Schildt · Phase 1 & 3</div>
+    </div>
+    <div class="book-tag">
+      <div class="bt-num">BOOK 02</div>
+      <div class="bt-title">Introduction to Java Programming</div>
+      <div style="color:#8B9EC7;font-size:11px;margin-top:4px">Y. Daniel Liang · Phase 2</div>
+    </div>
+    <div class="book-tag">
+      <div class="bt-num">BOOK 03</div>
+      <div class="bt-title">javanotes5 — Free Textbook</div>
+      <div style="color:#8B9EC7;font-size:11px;margin-top:4px">David Eck · Parallel read</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-thick"></div>
+
+<!-- PHASE TIMELINE OVERVIEW -->
+<section class="timeline-section" id="timeline">
+  <div class="timeline-inner">
+    <div class="section-label">The Plan</div>
+    <h2 class="section-title">14 Months. 5 Phases. One Goal.</h2>
+    <p class="section-sub">Both tracks — DSA and Development — run in sequence, not parallel. Build core Java first, then DSA, then build real systems.</p>
+
+    <div class="tl-track">
+      <div class="tl-phase">
+        <div class="tl-phase-num">01</div>
+        <div class="tl-phase-name">Java Core</div>
+        <div class="tl-phase-months mono">Months 0–2</div>
+        <div class="tl-bar bar-green"></div>
+      </div>
+      <div class="tl-phase">
+        <div class="tl-phase-num">02</div>
+        <div class="tl-phase-name">DSA</div>
+        <div class="tl-phase-months mono">Months 2–5</div>
+        <div class="tl-bar bar-blue"></div>
+      </div>
+      <div class="tl-phase">
+        <div class="tl-phase-num">03</div>
+        <div class="tl-phase-name">Dev Stack</div>
+        <div class="tl-phase-months mono">Months 5–8</div>
+        <div class="tl-bar bar-amber"></div>
+      </div>
+      <div class="tl-phase">
+        <div class="tl-phase-num">04</div>
+        <div class="tl-phase-name">Projects</div>
+        <div class="tl-phase-months mono">Months 8–11</div>
+        <div class="tl-bar bar-coral"></div>
+      </div>
+      <div class="tl-phase">
+        <div class="tl-phase-num">05</div>
+        <div class="tl-phase-name">Interview</div>
+        <div class="tl-phase-months mono">Months 11–14</div>
+        <div class="tl-bar bar-purple"></div>
+      </div>
+    </div>
+
+    <div class="highlight-card">
+      <div class="hc-icon">⚡</div>
+      <div>
+        <div class="hc-title">The Non-Negotiable Rule</div>
+        <div class="hc-text">Write code every single day — even if it's just 30 minutes. The compound effect of daily practice is what separates people who <em>learn</em> Java from people who get <em>hired</em> for it. Solve at least 1 LeetCode problem from Day 1 of Phase 2 onwards, permanently.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY NAV for phases -->
+<div class="sticky-phases">
+  <div class="sticky-phases-inner">
+    <a href="#books" class="sp-link">📚 Books</a>
+    <a href="#phase1" class="sp-link">① Java Core</a>
+    <a href="#phase2" class="sp-link">② DSA</a>
+    <a href="#phase3" class="sp-link">③ Dev Stack</a>
+    <a href="#projects" class="sp-link">④ Projects</a>
+    <a href="#interview" class="sp-link">⑤ Interview</a>
+    <a href="#salary" class="sp-link">💰 Salary</a>
+  </div>
+</div>
+
+<!-- BOOKS SECTION -->
+<section class="section" id="books">
+  <div class="section-label">Your Arsenal</div>
+  <h2 class="section-title">3 Books. Strategically Mapped.</h2>
+  <p class="section-sub">You already have the right books. Here's exactly when and how to use each one.</p>
+
+  <div class="books-grid">
+    <div class="book-card" data-num="01">
+      <div class="book-icon-big">📗</div>
+      <span class="book-badge badge-phase1">Phase 1 + 3</span>
+      <div class="book-title">Java: A Beginner's Guide</div>
+      <div class="book-author">— Herbert Schildt</div>
+      <div class="book-desc">Start here on Day 1. This is your primary companion through Phase 1. Schildt's explanations are crystal clear — read it like a novel, chapter by chapter, not as a reference. Return to the advanced chapters in Phase 3.</div>
+      <div class="book-chapters">
+        <div class="book-chapters-label">Read in Phase 1</div>
+        <span class="chapter-tag">Ch 1–5: Syntax</span>
+        <span class="chapter-tag">Ch 6–8: OOP</span>
+        <span class="chapter-tag">Ch 9–11: Generics</span>
+        <span class="chapter-tag">Ch 12–14: Collections</span>
+        <div class="book-chapters-label" style="margin-top:10px">Return in Phase 3</div>
+        <span class="chapter-tag">Ch 15: JDBC</span>
+        <span class="chapter-tag">Ch 18: Lambdas</span>
+        <span class="chapter-tag">Ch 20–22: I/O</span>
+      </div>
+    </div>
+
+    <div class="book-card" data-num="02">
+      <div class="book-icon-big">📘</div>
+      <span class="book-badge badge-phase2">Phase 2 — DSA</span>
+      <div class="book-title">Introduction to Java Programming</div>
+      <div class="book-author">— Y. Daniel Liang (9th Ed.)</div>
+      <div class="book-desc">Your DSA bible. Chapters 20–28 are some of the best data structure explanations written in Java. Liang traces through every algorithm visually with diagrams. Skip Chapter 32 (JavaFX) unless you want GUI development.</div>
+      <div class="book-chapters">
+        <div class="book-chapters-label">Core DSA Chapters</div>
+        <span class="chapter-tag">Ch 20: Lists/Stacks/Queues</span>
+        <span class="chapter-tag">Ch 21: Sets/Maps</span>
+        <span class="chapter-tag">Ch 22: Efficient Algos</span>
+        <span class="chapter-tag">Ch 23–25: Sorting/BST/AVL</span>
+        <span class="chapter-tag">Ch 26: Hashing</span>
+        <span class="chapter-tag">Ch 27–28: Graphs</span>
+      </div>
+    </div>
+
+    <div class="book-card" data-num="03">
+      <div class="book-icon-big">📙</div>
+      <span class="book-badge badge-phase12">Parallel Read</span>
+      <div class="book-title">Introduction to Programming Using Java</div>
+      <div class="book-author">— David Eck (javanotes5.pdf · Free)</div>
+      <div class="book-desc">Read alongside Schildt in Phase 1. Eck is a professor and explains <em>why</em> things work, not just how. His OOP and linked data structures chapters build the deepest mental models. Available free at math.hws.edu.</div>
+      <div class="book-chapters">
+        <div class="book-chapters-label">Strongest Chapters</div>
+        <span class="chapter-tag">Ch 1–4: Foundations</span>
+        <span class="chapter-tag">Ch 5–8: OOP (best in class)</span>
+        <span class="chapter-tag">Ch 9: Linked Structures</span>
+        <span class="chapter-tag">Ch 10–11: I/O & Generics</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box" style="margin-top:24px">
+    <div class="tip-icon">💡</div>
+    <div><strong style="color:#FF6B35">Reading order:</strong> Start Schildt (ch 1–10) + Eck (ch 1–5) together in Month 1. Switch to Liang for Phase 2 DSA. Come back to Schildt ch 15+ for JDBC and advanced Java in Phase 3.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHASE 1: JAVA CORE -->
+<section class="phase-detail" id="phase1" data-phase-bg="01">
+  <div class="phase-detail-inner">
+    <div class="phase-header-row">
+      <div class="phase-num-big">01</div>
+      <div class="phase-header-text">
+        <span class="phase-months-badge" style="background:#22C55E18;color:#22C55E;border:1px solid #22C55E30">Months 0–2 · Green Phase</span>
+        <div class="phase-title-h2">Java Core Foundations</div>
+        <div class="phase-subtitle">Book: Java: A Beginner's Guide (Schildt) · Chapters 1–14</div>
+      </div>
+    </div>
+
+    <div class="topics-grid">
+      <div class="topics-card">
+        <div class="topics-card-label">Concepts to master</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>JVM, JDK, JRE — how Java actually runs</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>Variables, data types, operators, casting</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>Control flow: if/else, loops, switch</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>Methods, recursion, variable scope</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>Arrays & Strings — deep dive</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>OOP: Classes, Objects, Constructors</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>4 pillars: Encapsulation, Inheritance, Polymorphism, Abstraction</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>Interfaces & Abstract classes</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>Exception handling: try/catch/finally/throws</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>Collections: List, Set, Map, Queue</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>Generics & Iterators</div>
+        <div class="topic-item"><span class="topic-arrow">›</span>File I/O basics</div>
+      </div>
+      <div>
+        <div class="topics-card">
+          <div class="topics-card-label">Practice milestones</div>
+          <div class="topic-item"><span class="topic-arrow">›</span>Write 50+ small programs in Month 1</div>
+          <div class="topic-item"><span class="topic-arrow">›</span>Complete HackerRank Java track (30 problems)</div>
+          <div class="topic-item"><span class="topic-arrow">›</span>Build a CLI Calculator with full OOP design</div>
+          <div class="topic-item"><span class="topic-arrow">›</span>Build a Student Management System (CRUD)</div>
+          <div class="topic-item"><span class="topic-arrow">›</span>Implement your own LinkedList from scratch</div>
+          <div class="topic-item"><span class="topic-arrow">›</span>Write unit tests with JUnit 5</div>
+        </div>
+
+        <div class="topics-card" style="margin-top:16px">
+          <div class="topics-card-label">Resources</div>
+          <div class="res-grid">
+            <a class="res-item" href="https://www.youtube.com/@BroCodez" target="_blank">
+              <span class="res-icon">▶</span> Bro Code — Java Full Course (YouTube)
+              <span class="res-lang-tag lang-en">EN</span>
+            </a>
+            <a class="res-item" href="https://www.youtube.com/@ApnaCollegeOfficial" target="_blank">
+              <span class="res-icon">▶</span> Apna College — Java A to Z
+              <span class="res-lang-tag lang-hi">HI</span>
+            </a>
+            <a class="res-item" href="https://www.youtube.com/@CodeWithHarry" target="_blank">
+              <span class="res-icon">▶</span> CodeWithHarry — Java Course
+              <span class="res-lang-tag lang-hi">HI</span>
+            </a>
+            <a class="res-item" href="https://docs.oracle.com/javase/tutorial/" target="_blank">
+              <span class="res-icon">📄</span> Oracle Official Java Tutorials
+              <span class="res-lang-tag lang-en">EN</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-icon">💡</div>
+          <div>Use <strong>javanotes5.pdf chapters 1–8</strong> as a parallel read — Eck explains <em>why</em> OOP exists in a way Schildt doesn't. Both together = maximum foundation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE 2: DSA -->
+<section class="phase-detail" id="phase2" data-phase-bg="02" style="background:var(--ink2)">
+  <div class="phase-detail-inner">
+    <div class="phase-header-row">
+      <div class="phase-num-big" style="color:#3B82F6">02</div>
+      <div class="phase-header-text">
+        <span class="phase-months-badge" style="background:#3B82F618;color:#3B82F6;border:1px solid #3B82F630">Months 2–5 · Blue Phase</span>
+        <div class="phase-title-h2">Data Structures & Algorithms</div>
+        <div class="phase-subtitle">Book: Introduction to Java Programming (Liang) · Chapters 20–29</div>
+      </div>
+    </div>
+
+    <div class="topics-grid">
+      <div class="topics-card">
+        <div class="topics-card-label">Data Structures</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Arrays & Dynamic Arrays</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Linked Lists — Singly, Doubly, Circular</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Stack & Queue (Array + LinkedList based)</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>HashMap & HashSet internals</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Trees: Binary Tree, BST, AVL Tree</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Heap & Priority Queue</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Trie (prefix tree)</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Graph: Adjacency List & Matrix</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Segment Tree & Fenwick Tree</div>
+      </div>
+      <div class="topics-card">
+        <div class="topics-card-label">Algorithms</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Sorting: Bubble, Merge, Quick, Heap Sort</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Searching: Binary Search + all variants</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Recursion & Backtracking patterns</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Two Pointers & Sliding Window</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Dynamic Programming: top-down & bottom-up</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Greedy Algorithms</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Graph: BFS, DFS, Dijkstra, Bellman-Ford</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Topological Sort & Union-Find</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#3B82F6">›</span>Bit Manipulation</div>
+      </div>
+    </div>
+
+    <div class="dsa-problems-row">
+      <div class="prob-card">
+        <div class="prob-num">150</div>
+        <div class="prob-label">Easy problems</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-num">200</div>
+        <div class="prob-label">Medium problems</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-num">50</div>
+        <div class="prob-label">Hard problems</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-num">5+</div>
+        <div class="prob-label">Contests/week</div>
+      </div>
+    </div>
+
+    <div class="topics-card" style="margin-top:16px">
+      <div class="topics-card-label">Resources</div>
+      <div class="res-grid">
+        <a class="res-item" href="https://www.youtube.com/@takeUforward" target="_blank">
+          <span class="res-icon">▶</span> Striver's A2Z DSA Sheet — takeUforward (YouTube)
+          <span class="res-lang-tag lang-en">EN</span>
+        </a>
+        <a class="res-item" href="https://www.youtube.com/@NeetCode" target="_blank">
+          <span class="res-icon">▶</span> NeetCode 150 — Blind 75 explanations
+          <span class="res-lang-tag lang-en">EN</span>
+        </a>
+        <a class="res-item" href="https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/" target="_blank">
+          <span class="res-icon">📄</span> Striver A2Z Sheet — 450+ problems free
+          <span class="res-lang-tag lang-en">EN</span>
+        </a>
+        <a class="res-item" href="https://www.youtube.com/@ApnaCollegeOfficial" target="_blank">
+          <span class="res-icon">▶</span> Apna College — DSA in Java playlist
+          <span class="res-lang-tag lang-hi">HI</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-icon">🔥</div>
+      <div>Solve <strong>all problems in Java</strong>, not any other language. Use Liang textbook for theory and trace-throughs. Use Striver's sheet for daily problem selection. Never skip a day — even 1 problem counts.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE 3: DEV STACK -->
+<section class="phase-detail" id="phase3" data-phase-bg="03">
+  <div class="phase-detail-inner">
+    <div class="phase-header-row">
+      <div class="phase-num-big" style="color:#F59E0B">03</div>
+      <div class="phase-header-text">
+        <span class="phase-months-badge" style="background:#F59E0B18;color:#F59E0B;border:1px solid #F59E0B30">Months 5–8 · Amber Phase</span>
+        <div class="phase-title-h2">Java Development Stack</div>
+        <div class="phase-subtitle">Build real, hireable backend skills with Spring Boot & ecosystem</div>
+      </div>
+    </div>
+
+    <div class="topics-grid">
+      <div class="topics-card">
+        <div class="topics-card-label">Core Dev Topics</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Maven / Gradle — build tools</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>JDBC — connect Java to databases</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>SQL & MySQL fundamentals</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Spring Framework — IoC, DI, Beans</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Spring Boot — REST APIs (GET/POST/PUT/DELETE)</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Spring Data JPA + Hibernate (ORM)</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Spring Security — JWT authentication</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Microservices basics</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Docker — containerize your app</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Git & GitHub professional workflows</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Unit testing: JUnit 5 + Mockito</div>
+      </div>
+      <div class="topics-card">
+        <div class="topics-card-label">Advanced Java (before Spring)</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Multithreading & Concurrency</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Java 8+: Streams, Lambda, Optionals</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Functional interfaces</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Design Patterns: Singleton, Factory, Builder, Observer</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>SOLID principles</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Memory management & Garbage Collection</div>
+        <div class="topic-item"><span class="topic-arrow" style="color:#F59E0B">›</span>Serialization & Deserialization</div>
+
+        <div class="topics-card-label" style="margin-top:20px">Resources</div>
+        <div class="res-grid">
+          <a class="res-item" href="https://www.youtube.com/@DailyCodeBuffer" target="_blank">
+            <span class="res-icon">▶</span> Daily Code Buffer — Spring Boot
+            <span class="res-lang-tag lang-en">EN</span>
+          </a>
+          <a class="res-item" href="https://www.youtube.com/@telusko" target="_blank">
+            <span class="res-icon">▶</span> Telusko — Java + Spring (Navin Reddy)
+            <span class="res-lang-tag lang-hi">HI</span>
+          </a>
+          <a class="res-item" href="https://spring.io/guides" target="_blank">
+            <span class="res-icon">📄</span> Official Spring Guides
+            <span class="res-lang-tag lang-en">EN</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE 4: PROJECTS -->
+<section class="phase-detail" id="projects" data-phase-bg="04" style="background:var(--ink2)">
+  <div class="phase-detail-inner">
+    <div class="phase-header-row">
+      <div class="phase-num-big" style="color:#F87171">04</div>
+      <div class="phase-header-text">
+        <span class="phase-months-badge" style="background:#F8717118;color:#F87171;border:1px solid #F8717130">Months 8–11 · Coral Phase</span>
+        <div class="phase-title-h2">Real Projects for Your Portfolio</div>
+        <div class="phase-subtitle">These go on your resume and GitHub. Build them properly.</div>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <span class="project-level lv-beginner">Beginner</span>
+        <div class="project-name">URL Shortener</div>
+        <div class="project-stack">Spring Boot · MySQL · REST API</div>
+      </div>
+      <div class="project-card">
+        <span class="project-level lv-beginner">Beginner</span>
+        <div class="project-name">Student Result Management</div>
+        <div class="project-stack">Spring Boot · JPA · CRUD</div>
+      </div>
+      <div class="project-card">
+        <span class="project-level lv-beginner">Beginner</span>
+        <div class="project-name">Library Management System</div>
+        <div class="project-stack">Java OOP · MySQL · JDBC</div>
+      </div>
+      <div class="project-card">
+        <span class="project-level lv-intermediate">Intermediate</span>
+        <div class="project-name">E-commerce REST API</div>
+        <div class="project-stack">Spring Boot · JWT · Cart & Orders</div>
+      </div>
+      <div class="project-card">
+        <span class="project-level lv-intermediate">Intermediate</span>
+        <div class="project-name">Real-time Chat App</div>
+        <div class="project-stack">Spring Boot · WebSocket · STOMP</div>
+      </div>
+      <div class="project-card">
+        <span class="project-level lv-intermediate">Intermediate</span>
+        <div class="project-name">Multi-user Blog Platform</div>
+        <div class="project-stack">Spring Security · JPA · Roles</div>
+      </div>
+    </div>
+
+    <div class="highlight-card" style="margin-top:32px">
+      <div class="hc-icon">🚀</div>
+      <div>
+        <div class="hc-title">Capstone Project (25 LPA Target)</div>
+        <div class="hc-text">Build a <strong>Microservices app</strong> — split into Auth, Product, and Order services. Add API Gateway + Eureka service discovery, Redis caching, deploy on AWS (EC2 + RDS + S3), and build a CI/CD pipeline with GitHub Actions. This one project demonstrates everything: architecture thinking, cloud skills, and production readiness.</div>
+      </div>
+    </div>
+
+    <div class="tip-box" style="margin-top:20px">
+      <div class="tip-icon">⭐</div>
+      <div>Every project must have: <strong>GitHub repo with clean README</strong> + <strong>deployed live link</strong> + <strong>Postman collection</strong> + a <strong>2-minute video demo</strong>. This separates you from 95% of candidates who just have code dumps.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE 5: INTERVIEW -->
+<section class="phase-detail" id="interview" data-phase-bg="05">
+  <div class="phase-detail-inner">
+    <div class="phase-header-row">
+      <div class="phase-num-big" style="color:#A78BFA">05</div>
+      <div class="phase-header-text">
+        <span class="phase-months-badge" style="background:#A78BFA18;color:#A78BFA;border:1px solid #A78BFA30">Months 11–14 · Purple Phase</span>
+        <div class="phase-title-h2">Interview Preparation</div>
+        <div class="phase-subtitle">Target: SDE-2 roles at product companies — Flipkart, Razorpay, CRED, Atlassian</div>
+      </div>
+    </div>
+
+    <div class="interview-topics">
+      <div class="int-card">
+        <div class="int-card-icon">🧠</div>
+        <div class="int-card-title">DSA Interview Focus</div>
+        <ul class="int-list">
+          <li>Blind 75 + Striver's 191 problems</li>
+          <li>Mock interviews on Pramp / Interviewing.io</li>
+          <li>2–3 problems daily, no skipping</li>
+          <li>Explain approach out loud — always</li>
+          <li>20 min max per medium problem</li>
+          <li>Participate in Codeforces/LeetCode contests</li>
+        </ul>
+      </div>
+      <div class="int-card">
+        <div class="int-card-icon">☕</div>
+        <div class="int-card-title">Java Interview Deep Dive</div>
+        <ul class="int-list">
+          <li>JVM internals: heap, stack, metaspace</li>
+          <li>Garbage Collection algorithms (G1, ZGC)</li>
+          <li>Concurrency: synchronized, volatile, ThreadPool</li>
+          <li>Java 8–17 features (must know all)</li>
+          <li>Design patterns & their use cases</li>
+          <li>Spring Boot internals — auto-config, beans</li>
+        </ul>
+      </div>
+      <div class="int-card">
+        <div class="int-card-icon">🏗️</div>
+        <div class="int-card-title">System Design (25 LPA Key)</div>
+        <ul class="int-list">
+          <li>HLD: Load balancer, CDN, Caching, DB sharding</li>
+          <li>Design: URL shortener, Twitter, Uber</li>
+          <li>CAP theorem, eventual consistency</li>
+          <li>SQL vs NoSQL trade-offs</li>
+          <li>Microservices vs Monolith debate</li>
+          <li>Message queues: Kafka basics</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="topics-card" style="margin-top:20px">
+      <div class="topics-card-label">Resources</div>
+      <div class="res-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <a class="res-item" href="https://www.youtube.com/@gauravsen" target="_blank">
+          <span class="res-icon">▶</span> Gaurav Sen — System Design
+          <span class="res-lang-tag lang-en">EN</span>
+        </a>
+        <a class="res-item" href="https://www.geeksforgeeks.org/java-interview-questions/" target="_blank">
+          <span class="res-icon">📄</span> GFG Java Interview Questions (Top 150)
+          <span class="res-lang-tag lang-en">EN</span>
+        </a>
+        <a class="res-item" href="https://www.youtube.com/@arslaan_es" target="_blank">
+          <span class="res-icon">▶</span> Arslan — System Design for Interviews
+          <span class="res-lang-tag lang-en">EN</span>
+        </a>
+        <a class="res-item" href="https://github.com/checkcheckzz/system-design-interview" target="_blank">
+          <span class="res-icon">📄</span> System Design Interview Resources (GitHub)
+          <span class="res-lang-tag lang-en">EN</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET COMPANIES -->
+<section class="companies-section" id="companies">
+  <div class="companies-inner">
+    <div class="section-label">Target Companies</div>
+    <h2 class="section-title" style="margin-bottom:8px">Where 25 LPA Happens</h2>
+    <p style="color:var(--white-mid);font-size:15px;margin-bottom:0">These companies regularly hire Java developers at SDE-2 level in the 20–35 LPA range.</p>
+    <div class="companies-grid">
+      <div class="company-pill">Flipkart<span class="salary">20–40 LPA</span></div>
+      <div class="company-pill">Razorpay<span class="salary">22–45 LPA</span></div>
+      <div class="company-pill">PhonePe<span class="salary">20–40 LPA</span></div>
+      <div class="company-pill">CRED<span class="salary">25–50 LPA</span></div>
+      <div class="company-pill">Atlassian<span class="salary">30–60 LPA</span></div>
+      <div class="company-pill">Swiggy<span class="salary">20–38 LPA</span></div>
+      <div class="company-pill">Zomato<span class="salary">20–35 LPA</span></div>
+      <div class="company-pill">Walmart Labs<span class="salary">25–45 LPA</span></div>
+      <div class="company-pill">ShareChat<span class="salary">20–35 LPA</span></div>
+      <div class="company-pill">Meesho<span class="salary">22–40 LPA</span></div>
+      <div class="company-pill">Amazon<span class="salary">25–55 LPA</span></div>
+      <div class="company-pill">Microsoft<span class="salary">30–60 LPA</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SALARY SECTION -->
+<section class="salary-section" id="salary">
+  <div class="salary-inner">
+    <div class="section-label">The Target</div>
+    <h2 class="section-title">Salary Map — Java in India</h2>
+    <p class="section-sub">Product company salaries (2025 market). Your target sits comfortably in SDE-2 range.</p>
+
+    <div class="salary-bars">
+      <div class="salary-row">
+        <div><div class="sal-role">Fresher / Trainee</div><div class="sal-years">0–1 year</div></div>
+        <div class="sal-track"><div class="sal-fill sal-green" style="width:15%">4–8 LPA</div></div>
+        <div></div>
+      </div>
+      <div class="salary-row">
+        <div><div class="sal-role">SDE-1 / Junior</div><div class="sal-years">1–2 years</div></div>
+        <div class="sal-track"><div class="sal-fill sal-blue" style="width:35%">8–16 LPA</div></div>
+        <div></div>
+      </div>
+      <div class="salary-row">
+        <div><div class="sal-role" style="color:var(--lime)">SDE-2 ← Your Target</div><div class="sal-years">2–4 years</div></div>
+        <div class="sal-track" style="border-color:#C8F13550"><div class="sal-fill sal-lime" style="width:58%">16–35 LPA</div></div>
+        <div class="sal-target">25 LPA ✓</div>
+      </div>
+      <div class="salary-row">
+        <div><div class="sal-role">Senior SDE</div><div class="sal-years">4–6 years</div></div>
+        <div class="sal-track"><div class="sal-fill sal-amber" style="width:75%">30–60 LPA</div></div>
+        <div></div>
+      </div>
+      <div class="salary-row">
+        <div><div class="sal-role">Staff / Principal</div><div class="sal-years">6+ years</div></div>
+        <div class="sal-track"><div class="sal-fill sal-orange" style="width:92%">50–120 LPA</div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="skills-to-25">
+      <div class="section-label">What Gets You There</div>
+      <div class="s25-grid">
+        <div class="s25-item">
+          <div class="s25-icon">🎯</div>
+          <div class="s25-text"><strong>400+ LeetCode Problems</strong>With contest rating above 1500. Quality of understanding matters more than quantity.</div>
+        </div>
+        <div class="s25-item">
+          <div class="s25-icon">☁️</div>
+          <div class="s25-text"><strong>Cloud-Deployed Project</strong>Microservices app live on AWS with CI/CD — this alone doubles your shortlisting rate.</div>
+        </div>
+        <div class="s25-item">
+          <div class="s25-icon">🏗️</div>
+          <div class="s25-text"><strong>System Design Fluency</strong>HLD + LLD both. Most candidates skip LLD — don't. It's asked in SDE-2 rounds.</div>
+        </div>
+        <div class="s25-item">
+          <div class="s25-icon">☕</div>
+          <div class="s25-text"><strong>Deep Java Knowledge</strong>JVM internals, GC, concurrency — interviewers at product companies go deep here.</div>
+        </div>
+        <div class="s25-item">
+          <div class="s25-icon">🤝</div>
+          <div class="s25-text"><strong>Referrals</strong>A referral from an employee increases interview conversion by 10×. Network on LinkedIn from Month 8.</div>
+        </div>
+        <div class="s25-item">
+          <div class="s25-icon">📝</div>
+          <div class="s25-text"><strong>1-Page ATS Resume</strong>Clean, quantified bullets. No objective statements. Projects with live links and GitHub.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY SCHEDULE -->
+<section class="daily-section">
+  <div class="daily-inner">
+    <div class="section-label">Daily Routine</div>
+    <h2 class="section-title">How to Structure Your Day</h2>
+    <p style="color:var(--white-mid);font-size:15px;margin-bottom:0">Adapt to your schedule. The key: DSA and concept study should never share the same mental block.</p>
+    <div class="daily-grid">
+      <div class="day-card">
+        <div class="day-label">Phases 1–2: Weekday (Learning Mode)</div>
+        <div class="day-schedule">
+          <div class="time-slot">
+            <div class="time">6:00–7:30</div>
+            <div class="activity"><strong>Theory reading</strong> — 1 chapter from your current book, take notes</div>
+          </div>
+          <div class="time-slot">
+            <div class="time">9:00–12:00</div>
+            <div class="activity"><strong>Code implementation</strong> — implement what you read, write from scratch</div>
+          </div>
+          <div class="time-slot">
+            <div class="time">13:00–15:00</div>
+            <div class="activity"><strong>LeetCode</strong> — 2 problems. 1 easy warm-up + 1 medium focus</div>
+          </div>
+          <div class="time-slot">
+            <div class="time">20:00–21:30</div>
+            <div class="activity"><strong>Review + revision</strong> — revisit yesterday's solutions, understand why</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-card">
+        <div class="day-label">Phases 3–4: Weekday (Builder Mode)</div>
+        <div class="day-schedule">
+          <div class="time-slot">
+            <div class="time">6:00–7:00</div>
+            <div class="activity"><strong>LeetCode warm-up</strong> — 1 medium problem (maintain streak)</div>
+          </div>
+          <div class="time-slot">
+            <div class="time">9:00–13:00</div>
+            <div class="activity"><strong>Spring Boot / Dev project</strong> — build a feature, debug, test</div>
+          </div>
+          <div class="time-slot">
+            <div class="time">14:00–16:00</div>
+            <div class="activity"><strong>YouTube / Docs</strong> — Spring guide or system design video</div>
+          </div>
+          <div class="time-slot">
+            <div class="time">20:00–21:30</div>
+            <div class="activity"><strong>Project polish</strong> — README, Postman, deployment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="divider-thick"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Java<span>Mastery</span></div>
+        <div class="footer-tagline">DSA · Development · 25 LPA</div>
+      </div>
+      <div style="max-width:400px">
+        <div style="font-size:13px;color:var(--steel);margin-bottom:12px;font-family:'JetBrains Mono',monospace">YOUR 3 BOOKS</div>
+        <div style="font-size:13px;color:var(--white-mid);line-height:2">
+          📗 Java: A Beginner's Guide — Schildt<br>
+          📘 Introduction to Java Programming — Liang<br>
+          📙 javanotes5 — David Eck (free)
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-quote">"First, solve the problem. Then, write the code." — John Johnson</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px">14 months · 5 phases · 1 goal</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Smooth section highlight for sticky nav
+  const sections = document.querySelectorAll('section[id]');
+  const spLinks = document.querySelectorAll('.sp-link');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        spLinks.forEach(l => {
+          l.style.color = l.href.endsWith('#'+id) ? 'var(--orange)' : '';
+          l.style.borderBottomColor = l.href.endsWith('#'+id) ? 'var(--orange)' : '';
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Animate salary bars on scroll
+  const salFills = document.querySelectorAll('.sal-fill');
+  const widths = [];
+  salFills.forEach(f => {
+    widths.push(f.style.width);
+    f.style.width = '0%';
+  });
+
+  const salaryObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        salFills.forEach((f, i) => {
+          setTimeout(() => { f.style.width = widths[i]; }, i * 100);
+        });
+        salaryObs.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const salSection = document.getElementById('salary');
+  if (salSection) salaryObs.observe(salSection);
+</script>
+</body>
+</html>
