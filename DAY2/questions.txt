@@ -1,0 +1,43 @@
+Practice Programs (Easy → Hard)
+
+Level 1 — Easy
+
+1. Student Information
+    * Declare variables for name, age, USN, branch, and CGPA, then display them.
+2. Basic Arithmetic Calculator
+    * Take two numbers and display their sum, difference, product, quotient, and remainder.
+3. Area & Perimeter of a Rectangle
+    * Read length and breadth, then calculate area and perimeter.
+
+⸻
+
+Level 2 — Medium
+
+4. Temperature Converter
+    * Convert Celsius to Fahrenheit and Fahrenheit to Celsius.
+5. Simple Interest Calculator
+    * Input principal, rate, and time, then calculate simple interest and total amount.
+6. Swap Two Numbers
+    * Perform swapping once using a temporary variable and once without using a temporary variable.
+
+⸻
+
+Level 3 — Intermediate
+
+7. Type Casting Demonstration
+    * Show implicit (widening) and explicit (narrowing) type casting with suitable examples, and observe the changes in values.
+8. Marks Percentage Calculator
+    * Read marks for five subjects, calculate the total, average, and percentage.
+9. Salary Breakdown
+    * Given a basic salary, calculate HRA, DA, gross salary, and net salary using fixed percentage values.
+
+⸻
+
+Level 4 — Challenging
+
+10. Operator Demonstration Program
+    * Write a program that demonstrates arithmetic, assignment, unary, relational, logical, and ternary operators using appropriate examples and displays the result of each operation.
+11. Expression Evaluation
+    * Create a program that evaluates a complex mathematical expression involving multiple operators and verify the effect of operator precedence. Use parentheses to compare different evaluation orders.
+12. Mini Student Result Calculator
+    * Read a student’s details and marks, calculate total, average, percentage, determine pass/fail based on a chosen passing criterion, and display the complete result in a well-formatted output.

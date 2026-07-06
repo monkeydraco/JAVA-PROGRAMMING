@@ -1,5 +1,0 @@
-package DAY2;
-
-public class prog2 {
-    
-}

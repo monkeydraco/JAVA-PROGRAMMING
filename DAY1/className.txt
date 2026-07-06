@@ -1,0 +1,48 @@
+1.Why exactly should we use a class with same name as that of a file?
+    When you compile Main.java using the javac Main.java command, 
+    the compiler generates a separate .class file for every class defined inside. 
+    Naming the source file Main.java ensures a clean,
+    1:1 conceptual mapping to the output Main.class bytecode file that the JVM executes.
+
+
+--------------------------Here is the systematic breakdown of why Java enforces this rule.----------------------------------------------
+## The Core Reason
+Java requires the file name to match the public class name so the Java compiler and Virtual Machine (JVM) can instantly find and load your code without wasting time scanning other files.
+--------------------------------------------------------------------------------------------------------------------------------------------
+## Step-by-Step Architecture## 
+1. File Structure Equals Package Structure
+
+* Java organizes code using packages (e.g., com.project.search).
+* These packages correspond exactly to folders on your computer.
+* Because of this 1:1 mapping, the compiler expects the file inside the folder to mirror the class name inside the code. [1] 
+
+## 2. The Efficiency Rule (No Blind Searching)
+
+* Imagine a large project with 10,000 files.
+* If Class A needs to use Class B, the compiler needs to find Class B instantly.
+* If the file name matches the class name (B.java), the compiler goes straight to it.
+* If names didn't match, the compiler would have to open and read all 10,000 files just to locate Class B.
+
+## 3. One Public Gatekeeper Per File
+
+* Java allows only one public class per file.
+* Public classes are visible to the entire project.
+* Tying the file name to the single public class ensures total clarity.
+* Anyone looking at the file system knows exactly what public code is inside that file. [2] 
+
+## 4. Clean Bytecode Generation
+
+* When you compile Main.java, it generates a machine-readable file called Main.class.
+* The JVM executes this .class file.
+* Keeping the names identical prevents confusion between your source code (.java) and the executable bytecode (.class).
+
+------------------------------
+## Summary Checklist
+
+* Main.java → The source file you write.
+* public class Main → The code inside that file.
+* Main.class → The final compiled file the computer runs.
+
+
+2.
+

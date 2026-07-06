@@ -1,0 +1,6 @@
+package DAY4;
+
+public class prog4 
+{
+    
+}
