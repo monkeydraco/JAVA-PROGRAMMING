@@ -1,5 +1,5 @@
 package DAY3;
 
-public class prog3 {
+public class prog1 {
     
 }

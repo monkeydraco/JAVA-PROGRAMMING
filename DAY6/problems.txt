@@ -1,0 +1,77 @@
+Level 1 — Beginner
+    1. Even or Odd Number
+        Concepts: if-else
+        Take an integer as input and determine whether it is even or odd.
+
+⸻
+
+    2. Largest of Three Numbers
+        Concepts: if-else, relational operators
+        Read three integers and print the largest.
+
+⸻
+
+    3. Grade Calculator
+        Concepts: else-if ladder
+        Input marks (0–100) and display the corresponding grade (A, B, C, D, F).
+
+⸻
+
+Level 2 — Beginner+
+    4. Simple Calculator
+        Concepts: switch
+        Perform addition, subtraction, multiplication, division, and modulus based on the user’s menu choice.
+
+⸻
+
+    5. Multiplication Table Generator
+        Concepts: for loop
+        Generate the multiplication table for a given number.
+
+⸻
+
+    6. Sum of First N Natural Numbers
+        Concepts: for loop, accumulation
+        Calculate the sum of numbers from 1 to N.
+
+⸻
+
+Level 3 — Intermediate
+    7. Factorial of a Number
+        Concepts: loops, multiplication
+        Compute the factorial of a positive integer.
+
+⸻
+
+    8. Prime Number Checker
+        Concepts: loops, if, optimization
+        Determine whether a given number is prime.
+
+⸻
+
+    9. Reverse a Number
+        Concepts: while loop, arithmetic operators
+        Reverse the digits of an integer without converting it to a string.
+
+⸻
+
+Level 4 — Intermediate+
+    10. Number Guessing Game
+        Concepts: while loop, if-else
+        Use a fixed secret number. Keep asking the user until they guess correctly, giving hints like “Too High” or “Too Low”.
+
+⸻
+
+    11. Login System (3 Attempts)
+        Concepts: loops, conditions, break
+        Allow only three attempts to enter the correct username and password before locking the user out.
+
+⸻
+
+    12. ATM Menu Simulation
+        Concepts: switch, loops, break
+        Create a menu-driven ATM that supports:
+        * Check Balance
+        * Deposit
+        * Withdraw
+        * Exit
