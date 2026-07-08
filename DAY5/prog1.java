@@ -2,10 +2,19 @@ package DAY5;
 
 public class prog1
 {
-    public static void main(String[] args)
+    public static void main()
     {
-        int ash=10+10;
-        System.out.println(ash);
+        String str="  SANJANA ";
+        String s1=upperCase(str);
+
+        System.out.println(s1);
+        
+    }
+
+    public static String upperCase(String str)
+    {
+        return str.trim().toUpperCase();
+
     }
     
 }
