@@ -1,0 +1,27 @@
+# Practice Programs (Beginner → Advanced)
+
+
+## Beginner
+
+1.  Create a method to print a welcome message.
+2.  Create a method to find the square of a number.
+3.  Create a method that returns the larger of two numbers.
+
+
+## Intermediate
+
+4.  Create a method to check whether a number is even or odd.
+5.  Create a method to calculate the factorial of a number using
+    iteration.
+6.  Create a method to calculate the factorial of a number using
+    recursion.
+7.  Find the sum of the first N natural numbers using recursion.
+8.  Generate the Fibonacci series using recursion.
+
+
+## Advanced
+
+9.  Find the GCD of two numbers using recursion.
+10. Reverse a string using recursion.
+11. Calculate x\^n using recursion (power function).
+12. Solve the Tower of Hanoi problem using recursion.
