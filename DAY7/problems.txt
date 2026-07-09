@@ -1,0 +1,29 @@
+Level 1 — Beginner
+
+1. Store and display 10 integers using an array.
+2. Calculate the sum and average of all elements in an array.
+3. Find the largest element in an array.
+
+⸻
+
+Level 2 — Basic Logic
+
+4. Find the smallest element in an array.
+5. Count even and odd numbers in an array.
+6. Search for an element using Linear Search.
+
+⸻
+
+Level 3 — Intermediate
+
+7. Reverse the elements of an array.
+8. Find the second largest element in an array.
+9. Remove duplicate elements from a sorted array.
+
+⸻
+
+Level 4 — Advanced
+
+10. Rotate an array to the left by one position.
+11. Rotate an array to the right by k positions.
+12. Merge two sorted arrays into a single sorted array.
