@@ -1,0 +1,23 @@
+# Practice Programs
+
+## Beginner
+
+1.  Create three Student objects and display their details.
+2.  Create Book and Library classes.
+3.  Create Employee objects and display salaries.
+
+## Intermediate
+
+4.  Create Student and Course classes where a student enrolls in a
+    course.
+5.  Create Customer and BankAccount classes.
+6.  Create Car and Garage classes.
+
+## Advanced
+
+7.  Pass a Student object to another class.
+8.  Return a Product object from a method.
+9.  Demonstrate two references pointing to the same object.
+10. Build a simple Library Management model.
+11. Build a Student Management model.
+12. Build a mini E-Commerce model using multiple classes.
