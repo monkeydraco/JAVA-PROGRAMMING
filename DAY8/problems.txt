@@ -4,27 +4,36 @@
 
 1.  Create a `Student` class with fields for name, USN, and age. Create
     an object and display its details.
+
 2.  Create an `Employee` class with employee ID, name, and salary. Print
     the employee information.
+
 3.  Create a `Book` class with title, author, and price.
 
 ## Intermediate
 
 4.  Create a `Rectangle` class to calculate area and perimeter.
+
 5.  Create a `BankAccount` class with deposit and withdrawal methods.
+
 6.  Create a `Car` class and display the details of multiple car
     objects.
+
 7.  Create a `Circle` class to calculate area and circumference.
 
 ## Advanced
 
 8.  Create a `Student` class with a parameterized constructor to
     initialize data.
+
 9.  Demonstrate the difference between instance variables and static
     variables using an `Employee` class.
+
 10. Create an `InventoryItem` class that updates stock using object
     methods.
+
 11. Create a `LibraryBook` class and simulate issuing and returning
     books.
+    
 12. Create a simple `ATM` class with methods for deposit, withdrawal,
     and balance inquiry.
